@@ -1,6 +1,6 @@
 header{
     display: flex;
-    font-family: Montserrat Regular;
+    font-family: Montserrat Regular; /*importar as fontes do google fonts*/
     font-size: 24px;
     height: 100px;
     
@@ -15,4 +15,62 @@ a{
     color: black;
     font-weight: 700;
     /*Colocar margem à direta do título*/
+}
+
+.adicaoTask label{
+    font-family: Montserrat Medium;
+
+}
+
+/*mudar para gerar esses quadrados em JS*/
+.quadradinhosAdicaoTask{
+    margin-left: auto;
+    margin-right: 0;
+    display: inline;
+}
+
+.quadradinhoAzul{
+    height: 20px;
+    width: 20px;
+    background-color: #daf5fa;
+}
+
+.quadradinhoVerde{
+    height: 20px;
+    width: 20px;
+    background-color: #d1fecb;
+}
+
+.quadradinhoRosa{
+    height: 20px;
+    width: 20px;
+    background-color: #d1fecb;
+}
+
+.quadradinhoRoxo{
+    height: 20px;
+    width: 20px;
+    background-color: #dcd0f3;
+}
+
+.quadradinhoAmarelo{
+    height: 20px;
+    width: 20px;
+    background-color: #fcfccb;
+}
+
+.quadradinhoLaranja{
+    height: 20px;
+    width: 20px;
+    background-color: #fbd4b4;
+}
+
+.quadradinhoBranco{
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff;
+}
+
+.quadradinhoAzul, .quadradinhoVerde, .quadradinhoRosa, .quadradinhoRoxo, .quadradinhoAmarelo, .quadradinhoLaranja, .quadradinhoBranco{
+    margin-left: 20%;
 }
