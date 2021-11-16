@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
   <header>
     <div class="image">
       <img src="public/assets/well-organized-logo.png" alt="Well Organized Logo" />
@@ -20,137 +21,141 @@
       <button class="btn-menu">Arquivadas</button>
     </nav>
   </header>
-  <div class="container">
-    <div class="add-tasks">
-      <button id="btn-add-1">
-        <img src="public/assets/task-add-icon.png" alt="Adicionar" />
-        <span>Adicionar Tarefa</span>
-      </button>
-      <div class="form-add-tasks">
-        <label for="desc">Descrição</label>
-        <input type="text" id="desc" name="descricao" />
-        <label for="colors">Cor</label>
-        <section id="colors">
-          <div class="square color-blue"></div>
-          <div class="square color-green"></div>
-          <div class="square color-pink"></div>
-          <div class="square color-purple"></div>
-          <div class="square color-yellow"></div>
-          <div class="square color-orange"></div>
-          <div class="square color-white"></div>
-        </section>
-        <button id="btn-add-2">Adicionar</button>
-      </div>
-    </div>
-    <div class="container-tasks-todo">
-      <div class="card blue-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
-        </div>
-      </div>
-      <div class="card green-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar CSS</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
-        </div>
-      </div>
-      <div class="card pink-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
-        </div>
-      </div>
-      <div class="card purple-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
-        </div>
-      </div>
 
-      <div class="card yellow-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
-        </div>
-      </div>
-      <div class="card orange-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
+  <main>
+    <div class="container">
+      <div class="add-tasks">
+        <button id="btn-add-1">
+          <img src="public/assets/task-add-icon.png" alt="Adicionar" />
+          <span>Adicionar Tarefa</span>
+        </button>
+        <div class="form-add-tasks">
+          <label for="desc">Descrição</label>
+          <input type="text" id="desc" name="descricao" />
+          <label for="colors">Cor</label>
+          <section id="colors">
+            <div class="square color-blue"></div>
+            <div class="square color-green"></div>
+            <div class="square color-pink"></div>
+            <div class="square color-purple"></div>
+            <div class="square color-yellow"></div>
+            <div class="square color-orange"></div>
+            <div class="square color-white"></div>
+          </section>
+          <button id="btn-add-2">Adicionar</button>
         </div>
       </div>
-      <div class="card white-task">
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" alt="unchecked" />
-          <span>Não concluída</span>
+      <div class="container-tasks-todo">
+        <div class="card blue-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
         </div>
-        <p class="content">Estudar Html</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
-          </button>
+        <div class="card green-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar CSS</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
+        </div>
+        <div class="card pink-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
+        </div>
+        <div class="card purple-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
+        </div>
+
+        <div class="card yellow-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
+        </div>
+        <div class="card orange-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
+        </div>
+        <div class="card white-task">
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">Estudar Html</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img src="public/assets/trash-gray-scale.png" alt="lixeira desativada" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+  </main>
 
   <script src="public/js/script.js"></script>
 </body>
