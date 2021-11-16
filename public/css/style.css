@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Open+Sans:wght@600&family=Roboto:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Cabeçalho*/
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+}
+.image {
+  margin-left: 35px;
+  margin-right: 126px;
+}
+.btn-menu {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0px 16px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+}
+.btn-menu:hover {
+  border-bottom: 2px solid black;
+}
+.pipe-menu {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+}
+
+/*Área de adição de tarefas*/
+
+.add-tasks {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+#btn-add-1 {
+  margin-left: 25px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  color: #2196f3;
+  display: flex;
+  align-items: center;
+}
+.change #btn-add-1 {
+  display: none;
+}
+#btn-add-1 img {
+  margin-right: 10px;
+}
+.form-add-tasks {
+  height: 100px;
+  margin-left: 26px;
+  display: flex;
+  align-items: center;
+  transform: translateX(-140%);
+  transition: all 0.5s;
+}
+.change .form-add-tasks {
+  transform: translateX(0);
+}
+.form-add-tasks label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  margin: 0px 2px;
+}
+#desc {
+  width: 490px;
+  height: 40px;
+  background: #ffffff;
+  border: 2px solid #50b6cf;
+  border-radius: 7px;
+  margin-left: 6px;
+  margin-right: 18px;
+  padding: 9px 14px;
+}
+.square {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #646464;
+  margin: 0px 4px;
+  cursor: pointer;
+}
+.square:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.square:active {
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.color-blue {
+  background-color: #daf5fa;
+}
+.color-green {
+  background-color: #d1fecb;
+}
+.color-pink {
+  background-color: #f6d0f6;
+}
+.color-purple {
+  background-color: #dcd0f3;
+}
+.color-yellow {
+  background-color: #fcfccb;
+}
+.color-orange {
+  background-color: #fbd4b4;
+}
+.color-white {
+  background-color: #ffffff;
+}
+#colors {
+  display: inline-flex;
+}
+#btn-add-2 {
+  border: none;
+  border-radius: 10px;
+  background-color: #50b6cf;
+  width: 145px;
+  height: 40px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ffffff;
+  text-align: center;
+  margin-left: 16px;
+}
+#btn-add-2:hover {
+  background-color: #4ba3b9;
+}
+
+/*Área dos cartões de tarefas*/
+.container-tasks-todo {
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  width: 200px;
+  height: 200px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.25);
+  margin: 12px;
+  position: relative;
+}
+.header-card-task {
+  background-color: #ffa4a3;
+  height: 26px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #e42c28;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.header-card-task img,
+span {
+  margin-left: 5px;
+}
+.content {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 10px 5px;
+}
+.footer-btns {
+  position: absolute;
+  bottom: 8px;
+  right: 5px;
+}
+.footer-btns button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.blue-task {
+  background-color: #daf5fa;
+  color: #19b5dc;
+}
+.green-task {
+  background-color: #d1fecb;
+  color: #58a51d;
+}
+.pink-task {
+  background-color: #f6d0f6;
+  color: #cb65cb;
+}
+.purple-task {
+  background-color: #dcd0f3;
+  color: #9763f9;
+}
+.yellow-task {
+  background-color: #fcfccb;
+  color: #8f8f69;
+}
+.orange-task {
+  background-color: #fbd4b4;
+  color: #ec842e;
+}
+.white-task {
+  background-color: #fffff;
+  color: #727272;
+}
