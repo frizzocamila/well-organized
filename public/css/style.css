@@ -18,14 +18,19 @@ header {
   margin-left: 35px;
   margin-right: 126px;
 }
+ul li {
+  list-style-type: none;
+  display: inline;
+}
 .btn-menu {
   border: none;
-  background-color: transparent;
   cursor: pointer;
   padding: 0px 16px;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
+  text-decoration: none;
+  color: #000000;
 }
 .btn-menu:hover {
   border-bottom: 2px solid black;
@@ -33,6 +38,18 @@ header {
 .pipe-menu {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
+}
+/*Area de tarefas arquivadas*/
+
+.arquivadas {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  margin-left: 35px;
 }
 
 /*Área de adição de tarefas*/
@@ -96,10 +113,7 @@ header {
 }
 .square:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-}
-.square:active {
   border: 1px solid #000000;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .color-blue {
   background-color: #daf5fa;
@@ -216,4 +230,23 @@ span {
 .white-task {
   background-color: #ffff;
   color: #727272;
+}
+/*Apenas exemplo dos cards arquivados*/
+.arq {
+  background-color: #b8ff99;
+  height: 26px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #2b5a07;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.arq img,
+span {
+  margin-left: 5px;
+}
+.arqcard .content {
+  text-decoration: line-through;
 }
