@@ -157,7 +157,7 @@ ul li {
 }
 
 /*Área dos cartões de tarefas*/
-.container-tasks-todo {
+#container-tasks-todo {
   margin: 12px;
   display: flex;
   align-items: center;
