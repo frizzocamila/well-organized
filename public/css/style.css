@@ -79,13 +79,12 @@ ul li {
 .form-add-tasks {
   height: 100px;
   margin-left: 26px;
-  display: flex;
+  display: none;
   align-items: center;
-  transform: translateX(-140%);
   transition: all 0.5s;
 }
 .change .form-add-tasks {
-  transform: translateX(0);
+  display: flex;
 }
 .form-add-tasks label {
   font-family: 'Montserrat', sans-serif;
