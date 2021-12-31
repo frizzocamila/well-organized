@@ -19,38 +19,27 @@ btnAdicionarCard.addEventListener('click', () => {
 
 function criarCardGenerico() {
     const divElem = document.createElement("div");
-    divElem.classList.add("card");
-    divElem.classList.add("blue-task");
 
-    const divHeader = document.createElement("div");
-    divHeader.classList.add("header-card-task");
-    divHeader.innerHTML += `
-      <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
-      <span>Não concluída</span>
-    
+    divElem.innerHTML += `
+      <div class="card blue-task">
+        <div class="header-card-task">
+          <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
+          <span>Não concluída</span>
+        </div>
+        <p class="content">Estudar Html</p>
+        <div class="footer-btns">
+          <button>
+            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+          </button>
+          <button>
+            <img
+              src="public/assets/trash-gray-scale.png"
+              alt="lixeira desativada"
+            />
+          </button>
+        </div>
+      </div>
     `;
-
-    const pContent = document.createElement("p");
-    pContent.classList.add("content");
-    pContent.innerText = "Texto Genérico de Adição"; //remover em produção
-    
-    const divFooter = document.createElement("div");
-    divFooter.classList.add("footer-btns");
-    divFooter.innerHTML = `
-      <button>
-        <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-      </button>
-      <button>
-        <img
-          src="public/assets/trash-gray-scale.png"
-          alt="lixeira desativada"
-        />
-      </button>
-    `;
-
-    divElem.appendChild(divHeader);
-    divElem.appendChild(pContent);
-    divElem.appendChild(divFooter); 
 
   return divElem;
 }
