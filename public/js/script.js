@@ -17,7 +17,7 @@ let quadradoAmarelo = document.querySelector("#scy");
 let quadradoLaranja = document.querySelector("#sco");
 let quadradoBranco = document.querySelector("#scw");
 //criar função para sinalizar a criação de card
-
+var corSelecionada = null;
 
 let inputDescricao = document.querySelector("#desc");
 
@@ -36,55 +36,65 @@ function loadCards() {
 
 
 
-function quadradoSelecionado(){
-  
+function quadradoSelecionado() {
   quadradoAzul.addEventListener('click', () => {
-    console.log("REEEEEEEEEEEEEEEEE");
+    //console.log("REEEEEEEEEEEEEEEEE");
     quadradoAzul.style.border = "1px solid #000000";
     quadradoAzul.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
-  });
+    corSelecionada = "blue";
+  }); 
   
-  
-  //quadradoGenerico.getElementsByClassName("color-");
-
-  
+  //quadradoGenerico.getElementsByClassName("color-");  
 }
 
 btnAdicionarCard.addEventListener('click', () => {
 
   let textoDescricao = inputDescricao.value;
+  try{
+    divContainerTasks.appendChild(criarCardGenerico(textoDescricao));
+  } catch (error) {
+    console.log("Linha 56 => script.js: " + error);
+  }
   
-  divContainerTasks.appendChild(criarCardGenerico(textoDescricao));
 });
 
 function criarCardGenerico(inputTextoDescricao) {
-    const divElem = document.createElement("div");
-    divElem.classList.add("card");
-    
-    //divElem.classList.add("");
+    if(inputTextoDescricao == "") {
+      alert("Insira alguma descrição na tarefa, cidadão.")
+    } else {   
 
-    divElem.innerHTML += `
-      
-        <div class="header-card-task">
-          <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
-          <span>Não concluída</span>
-        </div>
-        <p class="content">${inputTextoDescricao}</p>
-        <div class="footer-btns">
-          <button>
-            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-          </button>
-          <button>
-            <img
-              src="public/assets/trash-gray-scale.png"
-              alt="lixeira desativada"
-            />
-          </button>
-        </div>
-      
-    `;
+      const divElem = document.createElement("div");
+      divElem.classList.add("card");
+      var mascaraNomeCard = corSelecionada + "-task";
+      if(corSelecionada != null) {
+        divElem.classList.add(mascaraNomeCard);
+      } else {
+        //alert("Insira uma cor, cidadão!");
+      }
+      console.log(mascaraNomeCard);
+      divElem.innerHTML += `
+        
+          <div class="header-card-task">
+            <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
+            <span>Não concluída</span>
+          </div>
+          <p class="content">${inputTextoDescricao}</p>
+          <div class="footer-btns">
+            <button>
+              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+            </button>
+            <button>
+              <img
+                src="public/assets/trash-gray-scale.png"
+                alt="lixeira desativada"
+              />
+            </button>
+          </div>
+        
+      `;
 
-  return divElem;
+    return divElem;
+  }
 }
 
 
