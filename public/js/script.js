@@ -84,11 +84,30 @@ function quadradoSelecionado() {
   //quadradoGenerico.getElementsByClassName("color-");  
 }
 
+function tratarTexto(texto) {
+  let textoTratado = texto;
+  var contador = 0;
+
+  for(var i = 0; i < textoTratado.lenght; i++){
+    if((textoTratado[i] == ' ' && contador == 3) || (contador > 16)) {
+      textoTratado[i].concat("\n");
+      contador = 0;
+    }
+    contador++;
+    console.log(contador);
+  }
+
+  return textoTratado;
+}
+
 btnAdicionarCard.addEventListener('click', () => {
 
   let textoDescricao = inputDescricao.value;
+  
+
+  //console.log(textoTratado[2]);
   try{
-    divContainerTasks.appendChild(criarCardGenerico(textoDescricao));
+    divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
@@ -99,38 +118,40 @@ function criarCardGenerico(inputTextoDescricao) {
     if(inputTextoDescricao == "") {
       alert("Insira alguma descrição na tarefa, cidadão.")
     } else {   
-
-      const divElem = document.createElement("div");
-      divElem.classList.add("card");
-      var mascaraNomeCard = corSelecionada + "-task";
       if(corSelecionada != null) {
+        const divElem = document.createElement("div");
+        divElem.classList.add("card");
+        var mascaraNomeCard = corSelecionada + "-task";
+     
         divElem.classList.add(mascaraNomeCard);
+        divElem.innerHTML += `
+          
+            <div class="header-card-task">
+              <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
+              <span>Não concluída</span>
+            </div>
+            <p class="content">${inputTextoDescricao}</p>
+            <div class="footer-btns">
+              <button>
+                <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+              </button>
+              <button>
+                <img
+                  src="public/assets/trash-gray-scale.png"
+                  alt="lixeira desativada"
+                />
+              </button>
+            </div>
+          
+        `;
+        return divElem;
       } else {
-        //alert("Insira uma cor, cidadão!");
+        alert("Insira uma cor, cidadão!");
+        return 0;
       }
-      console.log(mascaraNomeCard);
-      divElem.innerHTML += `
-        
-          <div class="header-card-task">
-            <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
-            <span>Não concluída</span>
-          </div>
-          <p class="content">${inputTextoDescricao}</p>
-          <div class="footer-btns">
-            <button>
-              <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-            </button>
-            <button>
-              <img
-                src="public/assets/trash-gray-scale.png"
-                alt="lixeira desativada"
-              />
-            </button>
-          </div>
-        
-      `;
+      
 
-    return divElem;
+    
   }
 }
 
@@ -151,5 +172,6 @@ seccaoCores.addEventListener('click', () => {
 /*Chiqueirinho
 
 Texto maior que o card;
-
+Só o texto funfa kkkkkkk (definir padrão?)
+Local storage
 */
