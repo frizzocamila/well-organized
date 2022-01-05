@@ -37,11 +37,48 @@ function loadCards() {
 
 
 function quadradoSelecionado() {
+
+  //simplificar funções abaixo
   quadradoAzul.addEventListener('click', () => {
-    //console.log("REEEEEEEEEEEEEEEEE");
     quadradoAzul.style.border = "1px solid #000000";
     quadradoAzul.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "blue";
+  }); 
+
+  quadradoVerde.addEventListener('click', () => {
+    quadradoVerde.style.border = "1px solid #000000";
+    quadradoVerde.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "green";
+  }); 
+
+  quadradoRosa.addEventListener('click', () => {
+    quadradoRosa.style.border = "1px solid #000000";
+    quadradoRosa.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "pink";
+  }); 
+
+  quadradoRoxo.addEventListener('click', () => {
+    quadradoRoxo.style.border = "1px solid #000000";
+    quadradoRoxo.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "purple";
+  }); 
+
+  quadradoAmarelo.addEventListener('click', () => {
+    quadradoAmarelo.style.border = "1px solid #000000";
+    quadradoAmarelo.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "yellow";
+  });
+
+  quadradoLaranja.addEventListener('click', () => {
+    quadradoLaranja.style.border = "1px solid #000000";
+    quadradoLaranja.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "orange";
+  }); 
+
+  quadradoBranco.addEventListener('click', () => {
+    quadradoBranco.style.border = "1px solid #000000";
+    quadradoBranco.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
+    corSelecionada = "white";
   }); 
   
   //quadradoGenerico.getElementsByClassName("color-");  
