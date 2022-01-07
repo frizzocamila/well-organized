@@ -8,7 +8,8 @@ let cbxOrange = document.querySelector("#checkboxOrange");
 let cbxWhite = document.querySelector("#checkboxWhite");*/
 let seccaoCores = document.querySelector("#colors");
 
-let divAdicionarTarefa = document.querySelector(".add-tasks");
+//let divAdicionarTarefa = document.querySelector(".add-tasks");
+let containerPrincipal = document.querySelector(".container");
 let formularioTarefas = document.querySelector(".form-add-tasks");
 
 /* quadrados ao adicionar tarefas */
@@ -167,10 +168,12 @@ btnAdicionarCard.addEventListener('click', () => {
   
   //console.log(textoTratado[2]);
   try{
+
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
     inputDescricao.value = ""; //limpar texto
     corSelecionada = null;
     //formularioTarefas.style.display = "none";
+    containerPrincipal.classList.remove("change");
     //divAdicionarTarefa.style.display = "inherit"
     
   } catch (error) {
