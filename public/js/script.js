@@ -87,16 +87,23 @@ function quadradoSelecionado() {
 function tratarTexto(texto) {
   let textoTratado = texto;
   var contador = 0;
-
-  for(var i = 0; i < textoTratado.lenght; i++){
-    if((textoTratado[i] == ' ' && contador == 3) || (contador > 16)) {
+  var contadorTamanho = 0;
+  var flagPalvraGrande = 0;
+  
+  for(var i = 0; i < textoTratado.lenght; i++){           //16
+    if(textoTratado[i] == ' ' && contador == 3) {
       textoTratado[i].concat("\n");
       contador = 0;
+      flagPalvraGrande += 1;
+    }
+    if(textoTratado.lenght > 16) {
+      textoTratado += "\n";
+
     }
     contador++;
-    console.log(contador);
+    contadorTamanho++;
   }
-
+  console.log(contadorTamanho);
   return textoTratado;
 }
 
@@ -104,7 +111,6 @@ btnAdicionarCard.addEventListener('click', () => {
 
   let textoDescricao = inputDescricao.value;
   
-
   //console.log(textoTratado[2]);
   try{
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
@@ -174,4 +180,5 @@ seccaoCores.addEventListener('click', () => {
 Texto maior que o card;
 Só o texto funfa kkkkkkk (definir padrão?)
 Local storage
+Remover animação de shadow do quadradado
 */
