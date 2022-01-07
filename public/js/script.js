@@ -8,6 +8,9 @@ let cbxOrange = document.querySelector("#checkboxOrange");
 let cbxWhite = document.querySelector("#checkboxWhite");*/
 let seccaoCores = document.querySelector("#colors");
 
+let divAdicionarTarefa = document.querySelector(".add-tasks");
+let formularioTarefas = document.querySelector(".form-add-tasks");
+
 /* quadrados ao adicionar tarefas */
 let quadradoAzul = document.querySelector("#scb");
 let quadradoVerde = document.querySelector("#scg");
@@ -43,42 +46,49 @@ function quadradoSelecionado() {
     quadradoAzul.style.border = "1px solid #000000";
     quadradoAzul.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "blue";
+    pseudoDicionarioQuadrado();
   }); 
 
   quadradoVerde.addEventListener('click', () => {
     quadradoVerde.style.border = "1px solid #000000";
     quadradoVerde.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "green";
+    pseudoDicionarioQuadrado();
   }); 
 
   quadradoRosa.addEventListener('click', () => {
     quadradoRosa.style.border = "1px solid #000000";
     quadradoRosa.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "pink";
+    pseudoDicionarioQuadrado();
   }); 
 
   quadradoRoxo.addEventListener('click', () => {
     quadradoRoxo.style.border = "1px solid #000000";
     quadradoRoxo.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "purple";
+    pseudoDicionarioQuadrado();
   }); 
 
   quadradoAmarelo.addEventListener('click', () => {
     quadradoAmarelo.style.border = "1px solid #000000";
     quadradoAmarelo.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "yellow";
+    pseudoDicionarioQuadrado();
   });
 
   quadradoLaranja.addEventListener('click', () => {
     quadradoLaranja.style.border = "1px solid #000000";
     quadradoLaranja.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "orange";
+    pseudoDicionarioQuadrado();
   }); 
 
   quadradoBranco.addEventListener('click', () => {
     quadradoBranco.style.border = "1px solid #000000";
     quadradoBranco.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
     corSelecionada = "white";
+    pseudoDicionarioQuadrado();
   }); 
   
   //quadradoGenerico.getElementsByClassName("color-");  
@@ -103,17 +113,66 @@ function tratarTexto(texto) {
     contador++;
     contadorTamanho++;
   }
-  console.log(contadorTamanho);
+  //console.log(contadorTamanho);
   return textoTratado;
 }
 
-btnAdicionarCard.addEventListener('click', () => {
+function limparQuadrado(corAtual) {
+  corAtual.style.boxShadow = "unset";
+  corAtual.style.border = "1px solid #646464";
+}
 
+function pseudoDicionarioQuadrado() {
+
+  let cores = new Map();
+  cores.set("blue", quadradoAzul);
+  cores.set("green", quadradoVerde);
+  cores.set("pink", quadradoRosa);
+  cores.set("purple", quadradoRoxo);
+  cores.set("yellow", quadradoAmarelo);
+  cores.set("orange", quadradoLaranja);
+  cores.set("white", quadradoBranco);
+
+  for (let [key, value] of cores) {
+    if(key != corSelecionada) limparQuadrado(value);
+    console.log("cor: " + key + " value: " + value);
+  }
+
+//quadradoAzul, quadradoVerde, quadradoRosa, quadradoRoxo, quadradoAmarelo, quadradoLaranja, quadradoBranco
+  //console.log(cores.get(quadradoAzul));
+  
+  
+
+
+  /*quadradoAzul.style.boxShadow = "unset";
+  quadradoAzul.style.border = "1px solid #646464";
+  quadradoVerde.style.boxShadow = "unset";
+  quadradoVerde.style.border = "1px solid #646464";
+  quadradoRosa.style.boxShadow = "unset";
+  quadradoRosa.style.border = "1px solid #646464";
+  quadradoRoxo.style.boxShadow = "unset";
+  quadradoRoxo.style.border = "1px solid #646464";
+  quadradoAmarelo.style.boxShadow = "unset";
+  quadradoAmarelo.style.border = "1px solid #646464";
+  quadradoLaranja.style.boxShadow = "unset";
+  quadradoLaranja.style.border = "1px solid #646464";
+  quadradoBranco.style.boxShadow = "unset";
+  quadradoBranco.style.border = "1px solid #646464";*/
+
+}
+
+btnAdicionarCard.addEventListener('click', () => {
+  
   let textoDescricao = inputDescricao.value;
   
   //console.log(textoTratado[2]);
   try{
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
+    inputDescricao.value = ""; //limpar texto
+    corSelecionada = null;
+    //formularioTarefas.style.display = "none";
+    //divAdicionarTarefa.style.display = "inherit"
+    
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
@@ -163,8 +222,10 @@ function criarCardGenerico(inputTextoDescricao) {
 
 
 btnAdicionarTarefa.addEventListener('click', () => {
+  //divAdicionarTarefa.style.display = "flex";
   quadradoSelecionado();
   document.querySelector('.container').classList.toggle('change');
+ 
 });
 
 function saveCard() {
