@@ -114,25 +114,27 @@ ul li {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   border: 1px solid #000000;
 }
-.color-blue {
+
+/*cores dos quadrados => square color blue(yellow...)*/
+#scb {
   background-color: #daf5fa;
 }
-.color-green {
+#scg {
   background-color: #d1fecb;
 }
-.color-pink {
+#scpnk {
   background-color: #f6d0f6;
 }
-.color-purple {
+#scpl {
   background-color: #dcd0f3;
 }
-.color-yellow {
+#scy {
   background-color: #fcfccb;
 }
-.color-orange {
+#sco {
   background-color: #fbd4b4;
 }
-.color-white {
+#scw {
   background-color: #ffffff;
 }
 #colors {
