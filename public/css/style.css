@@ -233,7 +233,7 @@ span {
   color: #727272;
 }
 /*Apenas exemplo dos cards arquivados*/
-.arq {
+.header-card-task-done {
   background-color: #b8ff99;
   height: 26px;
   font-family: 'Roboto', sans-serif;
@@ -244,10 +244,10 @@ span {
   align-items: center;
   cursor: pointer;
 }
-.arq img,
+.header-card-task-done img,
 span {
   margin-left: 5px;
 }
-.arqcard .content {
+.changeArq .content {
   text-decoration: line-through;
 }
