@@ -25,9 +25,9 @@ var corSelecionada = null;
 
 let inputDescricao = document.querySelector("#desc");
 
+let divContainerTasks = document.getElementById("container-tasks-todo");
 
-
-let divContainerTasks = document.getElementById('container-tasks-todo');
+let divCabecalhoCard = document.getElementsByClassName("header-card-task");
 
 function loadCards() {
   return JSON.parse(localStorage.getItem("stickers") || "[]");
@@ -36,9 +36,23 @@ function loadCards() {
 /*quadradoGenerico.addEventListener('click', () => {
   //console.log("Deu sinal de vida");
 });*/
+cabecalhoCardSelecionado();
 
+function cabecalhoCardSelecionado() {
+  for (var i = 0; i < divCabecalhoCard.length; i++) {
+    console.log(divCabecalhoCard[i]);
+    
+    divCabecalhoCard[i].innerHTML += `
+     <div class="header-card-task-done">
+        <img src="public/assets/checked.png" alt="checked">
+        <span>Concluída</span>
+     </div>
+    `;
+    
+  }
+}
 
-
+//divCabecalhoCard.
 
 function quadradoSelecionado() {
 
