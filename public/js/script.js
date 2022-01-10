@@ -36,23 +36,8 @@ function loadCards() {
 /*quadradoGenerico.addEventListener('click', () => {
   //console.log("Deu sinal de vida");
 });*/
-cabecalhoCardSelecionado();
 
-function cabecalhoCardSelecionado() {
-  for (var i = 0; i < divCabecalhoCard.length; i++) {
-    console.log(divCabecalhoCard[i]);
-    
-    divCabecalhoCard[i].innerHTML += `
-     <div class="header-card-task-done">
-        <img src="public/assets/checked.png" alt="checked">
-        <span>Concluída</span>
-     </div>
-    `;
-    
-  }
-}
 
-//divCabecalhoCard.
 
 function quadradoSelecionado() {
 
@@ -137,7 +122,12 @@ function limparQuadrado(corAtual) {
   corAtual.style.border = "1px solid #646464";
 }
 
-function pseudoDicionarioQuadrado() {
+function limparTodosQuadrados() {
+
+  return true;
+}
+
+function pseudoDicionarioQuadrado(limparCorAtual) {
 
   let cores = new Map();
   cores.set("blue", quadradoAzul);
@@ -148,31 +138,17 @@ function pseudoDicionarioQuadrado() {
   cores.set("orange", quadradoLaranja);
   cores.set("white", quadradoBranco);
 
-  for (let [key, value] of cores) {
-    if(key != corSelecionada) limparQuadrado(value);
-    console.log("cor: " + key + " value: " + value);
+  if(limparCorAtual == true) {
+    for (let [key, value] of cores) {
+      if(key == corSelecionada) limparQuadrado(value);   
+      console.log("limpando atual => cor: " + key + " value: " + value);
+    }
+  } else {
+    for (let [key, value] of cores) {
+      if(key != corSelecionada) limparQuadrado(value);   
+      console.log("cor: " + key + " value: " + value);
+    }
   }
-
-//quadradoAzul, quadradoVerde, quadradoRosa, quadradoRoxo, quadradoAmarelo, quadradoLaranja, quadradoBranco
-  //console.log(cores.get(quadradoAzul));
-  
-  
-
-
-  /*quadradoAzul.style.boxShadow = "unset";
-  quadradoAzul.style.border = "1px solid #646464";
-  quadradoVerde.style.boxShadow = "unset";
-  quadradoVerde.style.border = "1px solid #646464";
-  quadradoRosa.style.boxShadow = "unset";
-  quadradoRosa.style.border = "1px solid #646464";
-  quadradoRoxo.style.boxShadow = "unset";
-  quadradoRoxo.style.border = "1px solid #646464";
-  quadradoAmarelo.style.boxShadow = "unset";
-  quadradoAmarelo.style.border = "1px solid #646464";
-  quadradoLaranja.style.boxShadow = "unset";
-  quadradoLaranja.style.border = "1px solid #646464";
-  quadradoBranco.style.boxShadow = "unset";
-  quadradoBranco.style.border = "1px solid #646464";*/
 
 }
 
@@ -185,6 +161,7 @@ btnAdicionarCard.addEventListener('click', () => {
 
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
     inputDescricao.value = ""; //limpar texto
+    pseudoDicionarioQuadrado(true);
     corSelecionada = null;
     //formularioTarefas.style.display = "none";
     containerPrincipal.classList.remove("change");
