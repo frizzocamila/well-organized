@@ -27,17 +27,30 @@ let inputDescricao = document.querySelector("#desc");
 
 let divContainerTasks = document.getElementById("container-tasks-todo");
 
-let divCabecalhoCard = document.getElementsByClassName("header-card-task");
+let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
+
 
 function loadCards() {
   return JSON.parse(localStorage.getItem("stickers") || "[]");
 }
 
-/*quadradoGenerico.addEventListener('click', () => {
-  //console.log("Deu sinal de vida");
-});*/
 
 
+function detectarCabecalhoCard() {
+  
+  console.log(divsCabecalhoCard)
+
+  for(var i = 0; i < divsCabecalhoCard.length; i++){
+   
+    //console.log("Funfou: " + divContainerTasks.item(i));
+    /*console.log(divsCabecalhoCard[2]);
+    divsCabecalhoCard[i].addEventListener('click', () => {
+      console.log(divsCabecalhoCard[i].);
+    });*/
+  }
+  
+
+}
 
 function quadradoSelecionado() {
 
@@ -122,8 +135,9 @@ function limparQuadrado(corAtual) {
   corAtual.style.border = "1px solid #646464";
 }
 
+/*apagar esta func.*/
 function limparTodosQuadrados() {
-
+  
   return true;
 }
 
@@ -141,12 +155,12 @@ function pseudoDicionarioQuadrado(limparCorAtual) {
   if(limparCorAtual == true) {
     for (let [key, value] of cores) {
       if(key == corSelecionada) limparQuadrado(value);   
-      console.log("limpando atual => cor: " + key + " value: " + value);
+      //console.log("limpando atual => cor: " + key + " value: " + value);
     }
   } else {
     for (let [key, value] of cores) {
       if(key != corSelecionada) limparQuadrado(value);   
-      console.log("cor: " + key + " value: " + value);
+      //console.log("cor: " + key + " value: " + value);
     }
   }
 
@@ -158,7 +172,7 @@ btnAdicionarCard.addEventListener('click', () => {
   
   //console.log(textoTratado[2]);
   try{
-
+    //armazenar o card genérico, após modificações e persistir no localStorage
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
     inputDescricao.value = ""; //limpar texto
     pseudoDicionarioQuadrado(true);
@@ -166,12 +180,19 @@ btnAdicionarCard.addEventListener('click', () => {
     //formularioTarefas.style.display = "none";
     containerPrincipal.classList.remove("change");
     //divAdicionarTarefa.style.display = "inherit"
+    detectarCabecalhoCard();
     
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
   
 });
+
+function gerarNumeroAleatorio(entropia) { //estatisticamente é bem improvável que sejam gerados números iguais, por conta da quantidade de casas decimais
+  let numeroPseudoAleatorio = (entropia * (Math.random() * (divsCabecalhoCard.length + 1))) * 100;
+  numeroPseudoAleatorio = Math.floor(numeroPseudoAleatorio);
+  return numeroPseudoAleatorio;
+}
 
 function criarCardGenerico(inputTextoDescricao) {
     if(inputTextoDescricao == "") {
@@ -185,8 +206,8 @@ function criarCardGenerico(inputTextoDescricao) {
         divElem.classList.add(mascaraNomeCard);
         divElem.innerHTML += `
           
-            <div class="header-card-task">
-              <img src="public/assets/unchecked.png" id="checkboxBlue" alt="unchecked" />
+            <div class="header-card-task" id="hct${gerarNumeroAleatorio(Math.random())}">
+              <img src="public/assets/unchecked.png" alt="unchecked" />
               <span>Não concluída</span>
             </div>
             <p class="content">${inputTextoDescricao}</p>
@@ -203,6 +224,7 @@ function criarCardGenerico(inputTextoDescricao) {
             </div>
           
         `;
+        
         return divElem;
       } else {
         alert("Insira uma cor, cidadão!");
