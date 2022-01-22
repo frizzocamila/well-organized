@@ -24,9 +24,18 @@ let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
 carregarCards();
 
 function carregarCards() {
-  console.log("REEEEEEEEEEEEE");
-  console.log(Object.entries(localStorage));
-  //localStorage.forEach(card => console.log(localStorage.getItem(localStorage.key(card))));
+  
+  let cardsLocalStorage = Object.entries(localStorage);
+  //matriz 1x1, em que o i = identificação card e j = conteúdo card
+  console.log(cardsLocalStorage[0][0]);
+
+  //extrair a cor do card
+  corArmazenadaCard = cardsLocalStorage[0][0].split('_', 1);
+  console.log("=>" + corArmazenadaCard);
+
+  
+
+  
 }
 
 function quadradoSelecionado() { 
@@ -166,7 +175,7 @@ function criarCardGenerico(inputTextoDescricao) {
         divElem.classList.add(mascaraNomeCard);
         divElem.innerHTML += `
           
-            <div class="header-card-task" id="hct${gerarNumeroAleatorio(Math.random())}">
+            <div class="header-card-task" id="${corSelecionada}_hct${gerarNumeroAleatorio(Math.random())}">
               <img src="public/assets/unchecked.png" alt="unchecked" />
               <span>Não concluída</span>
             </div>
@@ -183,7 +192,7 @@ function criarCardGenerico(inputTextoDescricao) {
               </button>
             </div>
         `;
-        salvarCard(divElem.innerHTML);
+        salvarCard(divElem.innerHTML, corSelecionada);
         return divElem;
       } else {
         alert("Insira uma cor, cidadão!");
@@ -197,8 +206,8 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
-function salvarCard(card) { // colocar o JSON.stringfy...
-  window.localStorage.setItem("card" + gerarNumeroAleatorio(Math.random()), JSON.stringify(card));
+function salvarCard(card, corCard) { // colocar o JSON.stringfy...
+  window.localStorage.setItem(corCard + "_card" + gerarNumeroAleatorio(Math.random()), JSON.stringify(card));
 }
 
 seccaoCores.addEventListener('click', () => {
