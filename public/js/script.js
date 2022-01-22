@@ -21,10 +21,12 @@ let inputDescricao = document.querySelector("#desc");
 let divContainerTasks = document.getElementById("container-tasks-todo");
 let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
 
-
+carregarCards();
 
 function carregarCards() {
-  return JSON.parse(localStorage.getItem("stickers") || "[]");
+  console.log("REEEEEEEEEEEEE");
+  console.log(Object.entries(localStorage));
+  //localStorage.forEach(card => console.log(localStorage.getItem(localStorage.key(card))));
 }
 
 function quadradoSelecionado() { 
@@ -138,7 +140,8 @@ btnAdicionarCard.addEventListener('click', () => {
     inputDescricao.value = ""; //limpar texto
     pseudoDicionarioQuadrado(true);
     corSelecionada = null;    
-    containerPrincipal.classList.remove("change");       
+    containerPrincipal.classList.remove("change");
+    carregarCards();
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
