@@ -1,14 +1,7 @@
 let btnAdicionarTarefa = document.querySelector("#btn-add-1");
 let btnAdicionarCard = document.querySelector("#btn-add-2");
-/*let cbxBlue = document.querySelector("#checkboxBlue");
-let cbxGreen = document.querySelector("#checkboxGreen");
-let cbxPink = document.querySelector("#checkboxPink");
-let cbxPurple = document.querySelector("#checkboxPurple");
-let cbxOrange = document.querySelector("#checkboxOrange");
-let cbxWhite = document.querySelector("#checkboxWhite");*/
-let seccaoCores = document.querySelector("#colors");
 
-//let divAdicionarTarefa = document.querySelector(".add-tasks");
+let seccaoCores = document.querySelector("#colors");
 let containerPrincipal = document.querySelector(".container");
 let formularioTarefas = document.querySelector(".form-add-tasks");
 
@@ -20,41 +13,19 @@ let quadradoRoxo = document.querySelector("#scpl");
 let quadradoAmarelo = document.querySelector("#scy");
 let quadradoLaranja = document.querySelector("#sco");
 let quadradoBranco = document.querySelector("#scw");
+
 //criar função para sinalizar a criação de card
 var corSelecionada = null;
 
 let inputDescricao = document.querySelector("#desc");
-
 let divContainerTasks = document.getElementById("container-tasks-todo");
-
 let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
-
 
 function loadCards() {
   return JSON.parse(localStorage.getItem("stickers") || "[]");
 }
 
-
-
-function detectarCabecalhoCard() {
-  
-  console.log(divsCabecalhoCard)
-
-  for(var i = 0; i < divsCabecalhoCard.length; i++){
-   
-    //console.log("Funfou: " + divContainerTasks.item(i));
-    /*console.log(divsCabecalhoCard[2]);
-    divsCabecalhoCard[i].addEventListener('click', () => {
-      console.log(divsCabecalhoCard[i].);
-    });*/
-  }
-  
-
-}
-
-function quadradoSelecionado() {
-
-  //simplificar funções abaixo
+function quadradoSelecionado() { 
   quadradoAzul.addEventListener('click', () => {
     quadradoAzul.style.border = "1px solid #000000";
     quadradoAzul.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.25)";
@@ -103,8 +74,6 @@ function quadradoSelecionado() {
     corSelecionada = "white";
     pseudoDicionarioQuadrado();
   }); 
-  
-  //quadradoGenerico.getElementsByClassName("color-");  
 }
 
 function tratarTexto(texto) {
@@ -126,19 +95,12 @@ function tratarTexto(texto) {
     contador++;
     contadorTamanho++;
   }
-  //console.log(contadorTamanho);
   return textoTratado;
 }
 
 function limparQuadrado(corAtual) {
   corAtual.style.boxShadow = "unset";
   corAtual.style.border = "1px solid #646464";
-}
-
-/*apagar esta func.*/
-function limparTodosQuadrados() {
-  
-  return true;
 }
 
 function pseudoDicionarioQuadrado(limparCorAtual) {
@@ -163,25 +125,19 @@ function pseudoDicionarioQuadrado(limparCorAtual) {
       //console.log("cor: " + key + " value: " + value);
     }
   }
-
 }
 
 btnAdicionarCard.addEventListener('click', () => {
   
   let textoDescricao = inputDescricao.value;
-  
-  //console.log(textoTratado[2]);
+
   try{
     //armazenar o card genérico, após modificações e persistir no localStorage
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
     inputDescricao.value = ""; //limpar texto
     pseudoDicionarioQuadrado(true);
-    corSelecionada = null;
-    //formularioTarefas.style.display = "none";
-    containerPrincipal.classList.remove("change");
-    //divAdicionarTarefa.style.display = "inherit"
-    detectarCabecalhoCard();
-    
+    corSelecionada = null;    
+    containerPrincipal.classList.remove("change");       
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
@@ -236,12 +192,9 @@ function criarCardGenerico(inputTextoDescricao) {
   }
 }
 
-
 btnAdicionarTarefa.addEventListener('click', () => {
-  //divAdicionarTarefa.style.display = "flex";
   quadradoSelecionado();
-  document.querySelector('.container').classList.toggle('change');
- 
+  document.querySelector('.container').classList.toggle('change'); 
 });
 
 function saveCard() {
