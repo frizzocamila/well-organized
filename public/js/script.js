@@ -21,7 +21,7 @@ let inputDescricao = document.querySelector("#desc");
 let divContainerTasks = document.getElementById("container-tasks-todo");
 let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
 
-function loadCards() {
+function carregarCards() {
   return JSON.parse(localStorage.getItem("stickers") || "[]");
 }
 
@@ -117,12 +117,10 @@ function pseudoDicionarioQuadrado(limparCorAtual) {
   if(limparCorAtual == true) {
     for (let [key, value] of cores) {
       if(key == corSelecionada) limparQuadrado(value);   
-      //console.log("limpando atual => cor: " + key + " value: " + value);
     }
   } else {
     for (let [key, value] of cores) {
       if(key != corSelecionada) limparQuadrado(value);   
-      //console.log("cor: " + key + " value: " + value);
     }
   }
 }
@@ -178,7 +176,6 @@ function criarCardGenerico(inputTextoDescricao) {
                 />
               </button>
             </div>
-          
         `;
         
         return divElem;
@@ -197,7 +194,7 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
-function saveCard() {
+function salvarCard() {
 }
 
 seccaoCores.addEventListener('click', () => {
