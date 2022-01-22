@@ -21,6 +21,8 @@ let inputDescricao = document.querySelector("#desc");
 let divContainerTasks = document.getElementById("container-tasks-todo");
 let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
 
+
+
 function carregarCards() {
   return JSON.parse(localStorage.getItem("stickers") || "[]");
 }
@@ -82,7 +84,7 @@ function tratarTexto(texto) {
   var contadorTamanho = 0;
   var flagPalvraGrande = 0;
   
-  for(var i = 0; i < textoTratado.lenght; i++){           //16
+  for(var i = 0; i < textoTratado.lenght; i++){
     if(textoTratado[i] == ' ' && contador == 3) {
       textoTratado[i].concat("\n");
       contador = 0;
@@ -132,6 +134,7 @@ btnAdicionarCard.addEventListener('click', () => {
   try{
     //armazenar o card genérico, após modificações e persistir no localStorage
     divContainerTasks.appendChild(criarCardGenerico(tratarTexto(textoDescricao)));
+
     inputDescricao.value = ""; //limpar texto
     pseudoDicionarioQuadrado(true);
     corSelecionada = null;    
@@ -177,15 +180,12 @@ function criarCardGenerico(inputTextoDescricao) {
               </button>
             </div>
         `;
-        
+        salvarCard(divElem.innerHTML);
         return divElem;
       } else {
         alert("Insira uma cor, cidadão!");
         return 0;
-      }
-      
-
-    
+      }    
   }
 }
 
@@ -194,7 +194,8 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
-function salvarCard() {
+function salvarCard(card) { // colocar o JSON.stringfy...
+  window.localStorage.setItem("card" + gerarNumeroAleatorio(Math.random()), JSON.stringify(card));
 }
 
 seccaoCores.addEventListener('click', () => {
