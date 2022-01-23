@@ -27,10 +27,7 @@ function carregarCards() {
   //matriz nx2, em que o i = identificação card e j = conteúdo card
   let cardsLocalStorage = Object.entries(localStorage).sort();
   
-  
-  //console.log(cardsLocalStorage)
   for (var i = 0; i < cardsLocalStorage.length; i++) {
-    
     var corArmazenadaCard = cardsLocalStorage[i][0].split('_', 1);
 
     var conteudoArmazenadoCard = cardsLocalStorage[i][1];
@@ -42,8 +39,6 @@ function carregarCards() {
     var inicioId = conteudoArmazenadoCard.search("id=");
     var idCortado = conteudoArmazenadoCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
     idCortado = idCortado.slice(5 - idCortado.length, -2);
-    //console.log(idCortado);
-    
 
     const divElemCarregada = document.createElement("div");
     divElemCarregada.innerHTML += `
@@ -67,28 +62,19 @@ function carregarCards() {
       </div>
     `;
     divContainerTasks.appendChild(divElemCarregada);
-
   }
 }
 
-
-
 function cabecalhoSelecionado(idCabecalho) {
-  //console.log("==>" + idCabecalho + "<==");
-  
-  //ver o que está acontecendo com id
   let cabecalhoCard = document.querySelector("#" + idCabecalho);
-  //console.log(idCabecalho);
-  
+
   cabecalhoCard.classList.remove("header-card-task");
   cabecalhoCard.classList.add("header-card-task-done");
   cabecalhoCard.getElementsByTagName("img")[0].src = "public/assets/checked.png";
   cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
   cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
 
-  
   let cardCompleto = cabecalhoCard.parentNode.parentNode.innerHTML;
-  //console.log(cardCompleto);
   editarCard(idCabecalho, cardCompleto);
 }
 
@@ -171,7 +157,6 @@ function limparQuadrado(corAtual) {
 }
 
 function pseudoDicionarioQuadrado(limparCorAtual) {
-
   let cores = new Map();
   cores.set("blue", quadradoAzul);
   cores.set("green", quadradoVerde);
@@ -193,7 +178,6 @@ function pseudoDicionarioQuadrado(limparCorAtual) {
 }
 
 btnAdicionarCard.addEventListener('click', () => {
-  
   let textoDescricao = inputDescricao.value;
 
   try{
@@ -228,7 +212,6 @@ function criarCardGenerico(inputTextoDescricao) {
      
         divElem.classList.add(mascaraNomeCard);
         divElem.innerHTML += `
-          
             <div class="header-card-task" id="${corSelecionada}_hct${gerarNumeroAleatorio(Math.random())}" onClick="cabecalhoSelecionado(this.id)">
               <img src="public/assets/unchecked.png" alt="unchecked" />
               <span>Não concluída</span>
@@ -261,11 +244,6 @@ btnAdicionarTarefa.addEventListener('click', () => {
 });
 
 function editarCard(idCard, card) {
- 
- /*  var inicioId = .search("id=");
-  var idCortado = .slice(inicioId - tamanhoTotalCard).split(" ")[0];
-  idCortado = idCortado.slice(5 - idCortado.length, -2); */
-  
   var corCard = idCard.split('_')[0];
   for(var i = 0; i < localStorage.length; i++){
     var tempCard = window.localStorage.getItem(localStorage.key(i));
@@ -274,17 +252,10 @@ function editarCard(idCard, card) {
     var idCortado = tempCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
     idCortado = idCortado.slice(5 - idCortado.length, -2);
     if(idCortado == idCard) {
-      //window.localStorage.removeItem(localStorage.key(i));
-      //salvarCard(card, corCard);
-      //window.localStorage.setItem(localStorage.key(i), JSON.stringify(card));
-      //console.log(JSON.stringify(card));
-      //fazer máscara com o idCard
+      //salvarCard();
     }
-    //console.log(idCortado);
+
   }
-  //console.log("É esse que a gente tá buscando: " + idCard);
-  //return window.localStorage.key();
-  //window.localStorage.setItem(corCard + "_card" + idCard);
 }
 
 function salvarCard(card, corCard) { // colocar o JSON.stringfy...
@@ -294,13 +265,3 @@ function salvarCard(card, corCard) { // colocar o JSON.stringfy...
 
 seccaoCores.addEventListener('click', () => {
 });
-
-
-
-/*Chiqueirinho
-
-Texto maior que o card;
-Só o texto funfa kkkkkkk (definir padrão?)
-Local storage
-Remover animação de shadow do quadradado
-*/
