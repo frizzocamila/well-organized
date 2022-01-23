@@ -33,8 +33,28 @@ function carregarCards() {
   corArmazenadaCard = cardsLocalStorage[0][0].split('_', 1);
   console.log("=>" + corArmazenadaCard);
 
-  
-
+  const divElemCarregada = document.createElement("div");
+  divElemCarregada.innerHTML += `
+      <div class="card ${corArmazenadaCard}-task">
+      <div class="header-card-task">
+        <img src="public/assets/unchecked.png" id="checkbox{corArmazenadaCard}" alt="unchecked" />
+        <span>Não concluída</span>
+      </div>
+      <p class="content">Estudar Html</p>
+      <div class="footer-btns">
+        <button>
+          <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+        </button>
+        <button>
+          <img
+            src="public/assets/trash-gray-scale.png"
+            alt="lixeira desativada"
+          />
+        </button>
+      </div>
+    </div>
+  `;
+  divContainerTasks.appendChild(divElemCarregada);
   
 }
 
