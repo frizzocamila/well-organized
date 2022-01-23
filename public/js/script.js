@@ -78,14 +78,15 @@ function cabecalhoSelecionado(idCabecalho) {
   
   //ver o que está acontecendo com id
   let cabecalhoCard = document.querySelector("#" + idCabecalho);
+  console.log(idCabecalho);
   
-  cabecalhoCard.addEventListener('click', () => {
-    cabecalhoCard.classList.remove("header-card-task");
-    cabecalhoCard.classList.add("header-card-task-done");
-    cabecalhoCard.getElementsByTagName("img")[0].src = "public/assets/checked.png";
-    cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
-    cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
-  });
+  cabecalhoCard.classList.remove("header-card-task");
+  cabecalhoCard.classList.add("header-card-task-done");
+  cabecalhoCard.getElementsByTagName("img")[0].src = "public/assets/checked.png";
+  cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
+  cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
+
+  editarCard();
 }
 
 function quadradoSelecionado() { 
@@ -256,7 +257,15 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
+function editarCard(card, corCard, idCard) {
+  
+  console.log(window.localStorage.getItem(localStorage.key(0)));
+  //return window.localStorage.key();
+  //window.localStorage.setItem(corCard + "_card" + idCard);
+}
+
 function salvarCard(card, corCard) { // colocar o JSON.stringfy...
+  console.log("====>" + JSON.stringify(card));
   window.localStorage.setItem(corCard + "_card" + gerarNumeroAleatorio(Math.random()), JSON.stringify(card));
 }
 
