@@ -86,7 +86,7 @@ function cabecalhoSelecionado(idCabecalho) {
   cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
   cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
 
-  editarCard();
+  editarCard(idCabecalho);
 }
 
 function quadradoSelecionado() { 
@@ -257,9 +257,21 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
-function editarCard(card, corCard, idCard) {
+function editarCard(idCard) {
+
+ /*  var inicioId = .search("id=");
+  var idCortado = .slice(inicioId - tamanhoTotalCard).split(" ")[0];
+  idCortado = idCortado.slice(5 - idCortado.length, -2); */
+
+  for(var i = 0; i < localStorage.length; i++){
+    var tempCard = window.localStorage.getItem(localStorage.key(i));
+    var tamanhoTotalCard = tempCard.length;
+    var inicioId = tempCard.search("id=");
+    var idCortado = tempCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
+    idCortado = idCortado.slice(5 - idCortado.length, -2);
+    console.log(idCortado);
+  }
   
-  console.log(window.localStorage.getItem(localStorage.key(0)));
   //return window.localStorage.key();
   //window.localStorage.setItem(corCard + "_card" + idCard);
 }
