@@ -86,8 +86,10 @@ function cabecalhoSelecionado(idCabecalho) {
   cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
   cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
 
-  console.log(cabecalhoCard.parentNode.parentNode);
-  editarCard(idCabecalho);
+  
+  let cardCompleto = cabecalhoCard.parentNode.parentNode.innerHTML;
+  //console.log(cardCompleto);
+  editarCard(idCabecalho, cardCompleto);
 }
 
 function quadradoSelecionado() { 
@@ -259,11 +261,12 @@ btnAdicionarTarefa.addEventListener('click', () => {
 });
 
 function editarCard(idCard, card) {
-
+ 
  /*  var inicioId = .search("id=");
   var idCortado = .slice(inicioId - tamanhoTotalCard).split(" ")[0];
   idCortado = idCortado.slice(5 - idCortado.length, -2); */
-
+  
+  var corCard = idCard.split('_')[0];
   for(var i = 0; i < localStorage.length; i++){
     var tempCard = window.localStorage.getItem(localStorage.key(i));
     var tamanhoTotalCard = tempCard.length;
@@ -271,8 +274,11 @@ function editarCard(idCard, card) {
     var idCortado = tempCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
     idCortado = idCortado.slice(5 - idCortado.length, -2);
     if(idCortado == idCard) {
+      //window.localStorage.removeItem(localStorage.key(i));
+      //salvarCard(card, corCard);
       //window.localStorage.setItem(localStorage.key(i), JSON.stringify(card));
-      console.log("Pimbinha");
+      //console.log(JSON.stringify(card));
+      //fazer máscara com o idCard
     }
     //console.log(idCortado);
   }
