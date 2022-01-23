@@ -24,37 +24,54 @@ let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
 carregarCards();
 
 function carregarCards() {
-  
+  //matriz nx2, em que o i = identificação card e j = conteúdo card
   let cardsLocalStorage = Object.entries(localStorage);
-  //matriz 1x1, em que o i = identificação card e j = conteúdo card
-  console.log(cardsLocalStorage[0][0]);
+  
+  for (var i = 0; i < cardsLocalStorage.length; i++) {
+    var corArmazenadaCard = cardsLocalStorage[i][0].split('_', 1);
+    console.log("Cor: " + corArmazenadaCard);
+    var conteudoArmazenadoCard = cardsLocalStorage[i][1];
+    var tamanhoTotalCard = cardsLocalStorage[i][1].length;
+    var inicioTextoCard = cardsLocalStorage[i][1].search("<p class=") + 21;
+    var fimTextoCard = cardsLocalStorage[i][1].search("p>") - 2; 
+    var textoCortado = conteudoArmazenadoCard.slice((inicioTextoCard - tamanhoTotalCard), (fimTextoCard - tamanhoTotalCard));
+    console.log(textoCortado);
+    console.log("i: " + inicioTextoCard + " | " + "f: " + fimTextoCard);
+    /*conteudoArmazenadoCard.slice(cardsLocalStorage[i][1].search("<p class=") - tamanhoTotalCard, cardsLocalStorage[i][1].search("footer-btns"));
+    console.log(conteudoArmazenadoCard);*/
+    //textoArmazenadoCard.slice(cardsLocalStorage[i][1].search("<p class="), cardsLocalStorage[i][1].search("footer-btns"));
+    //console.log("Texto: " + cardsLocalStorage[i][1].search("footer-btns"));
+    //.search("<p class="); //slice
 
+    const divElemCarregada = document.createElement("div");
+    divElemCarregada.innerHTML += `
+        <div class="card ${corArmazenadaCard}-task">
+        <div class="header-card-task">
+          <img src="public/assets/unchecked.png" id="checkbox${corArmazenadaCard}" alt="unchecked" />
+          <span>Não concluída</span>
+        </div>
+        <p class="content">${textoCortado}</p>
+        <div class="footer-btns">
+          <button>
+            <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
+          </button>
+          <button>
+            <img
+              src="public/assets/trash-gray-scale.png"
+              alt="lixeira desativada"
+            />
+          </button>
+        </div>
+      </div>
+    `;
+    divContainerTasks.appendChild(divElemCarregada);
+  }
+
+  //console.log(cardsLocalStorage[0][0]);
+
+  //console.log("Tamanho: " + cardsLocalStorage.length);
   //extrair a cor do card
-  corArmazenadaCard = cardsLocalStorage[0][0].split('_', 1);
-  console.log("=>" + corArmazenadaCard);
-
-  const divElemCarregada = document.createElement("div");
-  divElemCarregada.innerHTML += `
-      <div class="card ${corArmazenadaCard}-task">
-      <div class="header-card-task">
-        <img src="public/assets/unchecked.png" id="checkbox{corArmazenadaCard}" alt="unchecked" />
-        <span>Não concluída</span>
-      </div>
-      <p class="content">Estudar Html</p>
-      <div class="footer-btns">
-        <button>
-          <img src="public/assets/archive-gray-scale.png" alt="arquivar" />
-        </button>
-        <button>
-          <img
-            src="public/assets/trash-gray-scale.png"
-            alt="lixeira desativada"
-          />
-        </button>
-      </div>
-    </div>
-  `;
-  divContainerTasks.appendChild(divElemCarregada);
+  
   
 }
 
@@ -170,7 +187,7 @@ btnAdicionarCard.addEventListener('click', () => {
     pseudoDicionarioQuadrado(true);
     corSelecionada = null;    
     containerPrincipal.classList.remove("change");
-    carregarCards();
+    //carregarCards();
   } catch (error) {
     console.log("Linha 56 => script.js: " + error);
   }
