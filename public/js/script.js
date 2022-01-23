@@ -78,7 +78,7 @@ function cabecalhoSelecionado(idCabecalho) {
   
   //ver o que está acontecendo com id
   let cabecalhoCard = document.querySelector("#" + idCabecalho);
-  console.log(idCabecalho);
+  //console.log(idCabecalho);
   
   cabecalhoCard.classList.remove("header-card-task");
   cabecalhoCard.classList.add("header-card-task-done");
@@ -86,6 +86,7 @@ function cabecalhoSelecionado(idCabecalho) {
   cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
   cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
 
+  console.log(cabecalhoCard.parentNode.parentNode);
   editarCard(idCabecalho);
 }
 
@@ -257,7 +258,7 @@ btnAdicionarTarefa.addEventListener('click', () => {
   document.querySelector('.container').classList.toggle('change'); 
 });
 
-function editarCard(idCard) {
+function editarCard(idCard, card) {
 
  /*  var inicioId = .search("id=");
   var idCortado = .slice(inicioId - tamanhoTotalCard).split(" ")[0];
@@ -269,9 +270,13 @@ function editarCard(idCard) {
     var inicioId = tempCard.search("id=");
     var idCortado = tempCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
     idCortado = idCortado.slice(5 - idCortado.length, -2);
-    console.log(idCortado);
+    if(idCortado == idCard) {
+      //window.localStorage.setItem(localStorage.key(i), JSON.stringify(card));
+      console.log("Pimbinha");
+    }
+    //console.log(idCortado);
   }
-  
+  //console.log("É esse que a gente tá buscando: " + idCard);
   //return window.localStorage.key();
   //window.localStorage.setItem(corCard + "_card" + idCard);
 }
