@@ -71,6 +71,8 @@ function carregarCards() {
   }
 }
 
+
+
 function cabecalhoSelecionado(idCabecalho) {
   //console.log("==>" + idCabecalho + "<==");
   
@@ -81,6 +83,7 @@ function cabecalhoSelecionado(idCabecalho) {
     cabecalhoCard.classList.remove("header-card-task");
     cabecalhoCard.classList.add("header-card-task-done");
     cabecalhoCard.getElementsByTagName("img")[0].src = "public/assets/checked.png";
+    cabecalhoCard.parentNode.getElementsByTagName("p")[0].style.textDecoration = "line-through";
     cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
   });
 }
