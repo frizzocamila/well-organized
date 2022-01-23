@@ -41,8 +41,9 @@ function carregarCards() {
     
     var inicioId = conteudoArmazenadoCard.search("id=");
     var idCortado = conteudoArmazenadoCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
-    idCortado = idCortado.slice(5 - idCortado.length, -5);
+    idCortado = idCortado.slice(5 - idCortado.length, -1);
     console.log(idCortado);
+    
 
     const divElemCarregada = document.createElement("div");
     divElemCarregada.innerHTML += `
@@ -68,13 +69,16 @@ function carregarCards() {
     divContainerTasks.appendChild(divElemCarregada);
 
   }
-  
-  //console.log(cardsLocalStorage[0][0]);
+}
 
-  //console.log("Tamanho: " + cardsLocalStorage.length);
-  //extrair a cor do card
-  
-  
+function cabecalhoSelecionado(idCabecalho) {
+  console.log("==>" + idCabecalho + "<==");
+
+  let cabecalhoCard = document.querySelector("#" + idCabecalho);
+
+  /* cabecalhoCard.addEventListener('click', () => {
+    alert("REEEEEEEEEEE" + idCabecalho);
+  }); */
 }
 
 function quadradoSelecionado() { 
@@ -214,7 +218,7 @@ function criarCardGenerico(inputTextoDescricao) {
         divElem.classList.add(mascaraNomeCard);
         divElem.innerHTML += `
           
-            <div class="header-card-task" id="${corSelecionada}_hct${gerarNumeroAleatorio(Math.random())}">
+            <div class="header-card-task" id="${corSelecionada}_hct${gerarNumeroAleatorio(Math.random())}" onClick="cabecalhoSelecionado(this.id)">
               <img src="public/assets/unchecked.png" alt="unchecked" />
               <span>Não concluída</span>
             </div>
