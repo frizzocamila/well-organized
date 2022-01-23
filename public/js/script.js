@@ -19,34 +19,35 @@ var corSelecionada = null;
 
 let inputDescricao = document.querySelector("#desc");
 let divContainerTasks = document.getElementById("container-tasks-todo");
-let divsCabecalhoCard = document.getElementsByClassName("header-card-task");
+let divsCabecalhoCard = document.getElementsByTagName("header-card-task");
 
 carregarCards();
 
 function carregarCards() {
   //matriz nx2, em que o i = identificação card e j = conteúdo card
-  let cardsLocalStorage = Object.entries(localStorage);
+  let cardsLocalStorage = Object.entries(localStorage).sort();
   
+  
+  console.log(cardsLocalStorage)
   for (var i = 0; i < cardsLocalStorage.length; i++) {
+    
     var corArmazenadaCard = cardsLocalStorage[i][0].split('_', 1);
-    console.log("Cor: " + corArmazenadaCard);
+
     var conteudoArmazenadoCard = cardsLocalStorage[i][1];
     var tamanhoTotalCard = cardsLocalStorage[i][1].length;
     var inicioTextoCard = cardsLocalStorage[i][1].search("<p class=") + 21;
     var fimTextoCard = cardsLocalStorage[i][1].search("p>") - 2; 
     var textoCortado = conteudoArmazenadoCard.slice((inicioTextoCard - tamanhoTotalCard), (fimTextoCard - tamanhoTotalCard));
-    console.log(textoCortado);
-    console.log("i: " + inicioTextoCard + " | " + "f: " + fimTextoCard);
-    /*conteudoArmazenadoCard.slice(cardsLocalStorage[i][1].search("<p class=") - tamanhoTotalCard, cardsLocalStorage[i][1].search("footer-btns"));
-    console.log(conteudoArmazenadoCard);*/
-    //textoArmazenadoCard.slice(cardsLocalStorage[i][1].search("<p class="), cardsLocalStorage[i][1].search("footer-btns"));
-    //console.log("Texto: " + cardsLocalStorage[i][1].search("footer-btns"));
-    //.search("<p class="); //slice
+    
+    var inicioId = conteudoArmazenadoCard.search("id=");
+    var idCortado = conteudoArmazenadoCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
+    idCortado = idCortado.slice(5 - idCortado.length, -5);
+    console.log(idCortado);
 
     const divElemCarregada = document.createElement("div");
     divElemCarregada.innerHTML += `
         <div class="card ${corArmazenadaCard}-task">
-        <div class="header-card-task">
+        <div class="header-card-task" id="${idCortado}">
           <img src="public/assets/unchecked.png" id="checkbox${corArmazenadaCard}" alt="unchecked" />
           <span>Não concluída</span>
         </div>
@@ -65,8 +66,9 @@ function carregarCards() {
       </div>
     `;
     divContainerTasks.appendChild(divElemCarregada);
-  }
 
+  }
+  
   //console.log(cardsLocalStorage[0][0]);
 
   //console.log("Tamanho: " + cardsLocalStorage.length);
