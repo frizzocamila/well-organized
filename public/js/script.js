@@ -28,7 +28,7 @@ function carregarCards() {
   let cardsLocalStorage = Object.entries(localStorage).sort();
   
   
-  console.log(cardsLocalStorage)
+  //console.log(cardsLocalStorage)
   for (var i = 0; i < cardsLocalStorage.length; i++) {
     
     var corArmazenadaCard = cardsLocalStorage[i][0].split('_', 1);
@@ -41,14 +41,14 @@ function carregarCards() {
     
     var inicioId = conteudoArmazenadoCard.search("id=");
     var idCortado = conteudoArmazenadoCard.slice(inicioId - tamanhoTotalCard).split(" ")[0];
-    idCortado = idCortado.slice(5 - idCortado.length, -1);
-    console.log(idCortado);
+    idCortado = idCortado.slice(5 - idCortado.length, -2);
+    //console.log(idCortado);
     
 
     const divElemCarregada = document.createElement("div");
     divElemCarregada.innerHTML += `
         <div class="card ${corArmazenadaCard}-task">
-        <div class="header-card-task" id="${idCortado}">
+        <div class="header-card-task" id="${idCortado}" onClick="cabecalhoSelecionado(this.id)">
           <img src="public/assets/unchecked.png" id="checkbox${corArmazenadaCard}" alt="unchecked" />
           <span>Não concluída</span>
         </div>
@@ -72,13 +72,17 @@ function carregarCards() {
 }
 
 function cabecalhoSelecionado(idCabecalho) {
-  console.log("==>" + idCabecalho + "<==");
-
+  //console.log("==>" + idCabecalho + "<==");
+  
+  //ver o que está acontecendo com id
   let cabecalhoCard = document.querySelector("#" + idCabecalho);
-
-  /* cabecalhoCard.addEventListener('click', () => {
-    alert("REEEEEEEEEEE" + idCabecalho);
-  }); */
+  
+  cabecalhoCard.addEventListener('click', () => {
+    cabecalhoCard.classList.remove("header-card-task");
+    cabecalhoCard.classList.add("header-card-task-done");
+    cabecalhoCard.getElementsByTagName("img")[0].src = "public/assets/checked.png";
+    cabecalhoCard.getElementsByTagName("span")[0].innerText = "Concluída";
+  });
 }
 
 function quadradoSelecionado() { 
